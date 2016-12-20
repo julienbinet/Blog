@@ -34,18 +34,15 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                   menu
+                  <li><a href="">menu</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     {% if is_granted('IS_AUTHENTICATED_FULLY')%}
-                       CONNECTER
+                        {% include 'AppBundle:Default:modules/userNav.html.twig' %}
                     {% else %}
-                       PAS CONNECTE
+                        {% include 'AppBundle:Default:modules/user.html.twig' %}
                     {% endif %}
-
-                    <li>recherche</li>
-
 
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -79,6 +76,7 @@
         </div>
     </div>
 </footer>	
+<script src="{{ asset('js/jquery.min.js')}}"></script>
 <script src="{{ asset('js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('js/main.js')}}"></script>
 {% block javascripts %}{% endblock %}
