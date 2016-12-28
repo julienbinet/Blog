@@ -38,11 +38,7 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    {% if is_granted('IS_AUTHENTICATED_FULLY')%}
-                        {% include 'AppBundle:Default:modules/userNav.html.twig' %}
-                    {% else %}
-                        {% include 'AppBundle:Default:modules/user.html.twig' %}
-                    {% endif %}
+                    {% include '::modules/UserNav.html.twig' %}
 
                 </ul>
             </div><!-- /.navbar-collapse -->
