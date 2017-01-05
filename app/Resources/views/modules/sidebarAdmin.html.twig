@@ -1,31 +1,31 @@
 <nav>
     {% if is_granted('ROLE_ADMIN')%}
-    Utilisateurs
+    <span class="titre">Utilisateurs</span>
     <ul class="list-unstyled">
         <li>
-            <a href="">Ajouter</a>
+            <a class="menu-item" href="">Ajouter</a>
         </li>
-        <li><a href="{{ path('admin_users') }}">Liste</a></li>
+        <li><a class="menu-item" href="{{ path('admin_users') }}">Liste</a></li>
     </ul>
     {% endif %}
 
-    Articles
+    <span class="titre">Articles</span>
     <ul class="list-unstyled">
         <li>
-            <a href="">Ajouter</a>
+            <a class="menu-item" href="">Ajouter</a>
         </li>
         <li>
-            <a href="">Listes</a>
+            <a class="menu-item" href="{{ path('post_index') }}">Listes</a>
         </li>
     </ul>
 
-    Catégories
+    <span class="titre">Catégories</span>
     <ul class="list-unstyled">
         <li>
-            <a href="">Ajouter</a>
+            <a class="menu-item" href="">Ajouter</a>
         </li>
         <li>
-            <a href="">New</a>
+            <a class="menu-item" href="">New</a>
 
         </li>
 

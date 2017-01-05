@@ -38,13 +38,19 @@ body { padding-top: 50px; }
         margin-top: 15px;
     }
 
-    .sidebar > nav a{
-        color:#fff;
+    .sidebar > nav .titre{
+        padding-left: 15px;
         font-size: 16px;
-        padding:10px;
-        display: block;
     }
-    .sidebar > nav a:hover{
+
+    .sidebar > nav .menu-item{
+        color:#fff;
+        font-size: 14px;
+        padding:6px;
+        display: block;
+        padding-left: 30px;
+    }
+    .sidebar > nav .menu-item:hover{
         background-color: #555;
         text-decoration: none;
     }
