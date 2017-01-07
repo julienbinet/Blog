@@ -37,12 +37,12 @@ class Post
     private $title;
 
     /**
-     * @ORM\Column(length=16)
+     * @ORM\Column(length=16, nullable=true)
      */
     private $code;
 
     /**
-     * @Gedmo\Slug(fields={"title", "code"})
+     * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(length=128, unique=true)
      */
 

@@ -44,6 +44,7 @@ class PostController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $post->setIdUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush($post);

@@ -85,6 +85,7 @@ class Media {
 
         if (null !== $this->file) {
             $this->path = sha1(uniqid(mt_rand(), true)) . '.' . $this->file->guessExtension();
+            $this->name = $this->file->getClientOriginalName();
         }
     }
 
@@ -94,7 +95,6 @@ class Media {
      */
     public function upload() {
 
-//        var_dump($this->getUploadDir(), $this->path);die('upload');
 
         if (null !== $this->file) {
             $this->file->move($this->getUploadDir(), $this->path);
@@ -117,7 +117,7 @@ class Media {
      */
     public function removeUpload() {
         if (file_exists($this->temp)) {
-            unlink($this->getUploadDir() . '/' .$this->temp);
+            unlink($this->temp);
         }
     }
 
