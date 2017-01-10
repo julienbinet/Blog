@@ -10,12 +10,12 @@ use AppBundle\Entity\Media;
 class MediaData extends AbstractFixture implements OrderedFixtureInterface {
     public function load(ObjectManager $manager) {
         $media1 = new Media();
-        $media1->setPath('post/chien.jpeg');
+        $media1->setPath('post/chien.jpg');
         $media1->setName('Chien');
         $manager->persist($media1);
 
         $media2 = new Media();
-        $media2->setPath('post/bus.jpeg');
+        $media2->setPath('post/bus.jpg');
         $media2->setName('Bus');
         $manager->persist($media2);
 
@@ -25,7 +25,7 @@ class MediaData extends AbstractFixture implements OrderedFixtureInterface {
         $manager->persist($media3);
 
         $media4 = new Media();
-        $media4->setPath('post/city.png');
+        $media4->setPath('post/city.jpg');
         $media4->setName('Pont de San Francisco');
         $manager->persist($media4);
 
@@ -50,7 +50,7 @@ class MediaData extends AbstractFixture implements OrderedFixtureInterface {
         $manager->persist($media8);
 
         $media9 = new Media();
-        $media9->setPath('post/chat.png');
+        $media9->setPath('post/chat.jpg');
         $media9->setName('Un chat');
         $manager->persist($media9);
 
