@@ -18,7 +18,7 @@
             <tr>
                 <td>
                     <a href="{{ path('post_show', { 'id' : post.id }) }}">
-                        <img width="150px" src="../../{{ post.image.AssetPath }}" class='img-responsive' alt="{{ post.image.name }}" >
+                        <img src="{{ post.image.AssetPath|imagine_filter('my_thumb_mini') }}" class='img-responsive' alt="{{ post.image.name }}" >
                     </a>
                 </td>
                 <td><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.title }}</a></td>

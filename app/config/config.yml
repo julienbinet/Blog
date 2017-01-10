@@ -101,3 +101,19 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: AppBundle\Entity\User
+
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+
+    filter_sets:
+        cache: ~
+        my_thumb:
+            quality: 80
+            filters:
+                thumbnail: { size: [250, 190], mode: outbound }
+        my_thumb_mini:
+            quality: 80
+            filters:
+                thumbnail: { size: [50, 50], mode: outbound }
