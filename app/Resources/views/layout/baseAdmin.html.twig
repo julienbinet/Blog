@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>{% block titre %}Ecommerce - Admin{% endblock %}</title>
+    <title>{% block titre %}Mon site - Admin{% endblock %}</title>
     <meta name="keywords" content="{% block motsCles %}{% endblock %}" />
     <meta name="description" content="{% block description %}{% endblock %}" />
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" />
@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="{{asset('css/styleAdmin.css')}}" />
     <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}" />
     <link rel="stylesheet" href="{{asset('css/bttn.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/custom.min.css')}}" />
     {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="{{asset('css/custom.min.css')}}" />
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
