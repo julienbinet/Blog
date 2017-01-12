@@ -101,6 +101,9 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: AppBundle\Entity\User
+#    registration:
+#        form:
+#            type: app_user_registration
 
 liip_imagine:
     resolvers:

@@ -11,3 +11,8 @@ services:
         class: AppBundle\Twig\Extension\FiltersExtension
         tags:
             - {name: twig.extension}
+
+    app.form.registration:
+        class: AppBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: app_user_registration }

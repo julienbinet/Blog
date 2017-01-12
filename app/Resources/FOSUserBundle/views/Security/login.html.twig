@@ -1,55 +1,103 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
 
-{% trans_default_domain 'FOSUserBundle' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% block fos_user_content %}
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <title>Mon site | Connexion</title>
 
+    <!-- Bootstrap -->
+    <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ asset('assets/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="{{ asset('assets/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
 
-    <div class="row">
-        <div class="col-xs-12">
-            <h2>Connexion</h2>
-            <div id="collapseOne" class="accordion-body collapse in">
-                <div class="accordion-inner">
-                    <div class="col-xs-12 col-sm-4">
-                        <h4>Pas encore inscrit ?</h4>
-                        <em>
-                            nous vous invitons à vous inscrire<br />
-                            afin de passer votre commande et de manger équilibré.
-                        </em>
-                        <br /><br />
-                        <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary">S'inscrire</a>
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('css/custom.min.css') }}" rel="stylesheet">
+</head>
 
+<body class="login">
+<div>
+
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    <a class="hiddenanchor" id="signup"></a>
+    <a class="hiddenanchor" id="signin"></a>
+
+    <div class="login_wrapper">
+        <div class="animate form login_form">
+            <section class="login_content">
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('csrf_token') }}" />
+                    <h1>Connexion</h1>
+                    <div>
+                        <input type="text" class="form-control" required="required" placeholder="Nom d'utilisateur" id="username" name="_username" value="{{ last_username }}" />
+                    </div>
+                    <div>
+                        <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Mot de passe" required="" />
+                    </div>
+                    <div>
+                        <input class="btn btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                        <a class="reset_pass" href="{{ path('fos_user_resetting_request') }}">Mot de passe perdu?</a>
                     </div>
 
-                    <div class="col-xs-12 col-sm-4 offset2">
-                        <h4>Identifiants :</h4>
-                        <form action="{{ path("fos_user_security_check") }}" method="post">
-                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <div class="clearfix"></div>
 
-                            <div class="form-group">
-                                <label for="username">{{ 'security.login.username'|trans }}</label>
-                                <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control"/>
-                            </div>
+                    <div class="separator">
+                        <p class="change_link">Nouveau sur ce site?
+                            <a href="#signup" class="to_register"> Créez votre compte </a>
+                        </p>
 
-                            <div class="form-group">
-                                <label for="password">{{ 'security.login.password'|trans }}</label>
-                                <input type="password" id="password" name="_password" required="required" class="form-control" />
-                            </div>
-                            <br />
-                            <input class="btn btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-                        </form>
+                        <div class="clearfix"></div>
+                        <br />
+
+                        <div>
+                            <h1><i class="fa fa-paw"></i> Mon Site!</h1>
+                            <p>&copy; Copyright {{"now"|date('Y')}} - Binet Julien</p>
+                        </div>
                     </div>
-                    <div class="col-xs-12 col-sm-10">
-                        <a href="{{ path('fos_user_resetting_request') }}">Mot de passe perdu ?</a>
-                    </div>
+                </form>
+            </section>
+        </div>
+
+        <div id="register" class="animate form registration_form">
+            <section class="login_content">
+
+
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                <h1>Créez votre compte</h1>
+                {{ form_widget(form) }}
+                <div>
+                    <input type="submit" class="btn btn-primary"  value="{{ 'registration.submit'|trans }}" />
                 </div>
-            </div>
+                {{ form_end(form) }}
+
+                <div class="clearfix"></div>
+
+                <div class="separator">
+                    <p class="change_link">Déjà membre ?
+                            <a href="#signin" class="to_register"> Connexion </a>
+                        </p>
+
+                    <div class="clearfix"></div>
+                    <br />
+
+                    <div>
+                        <h1><i class="fa fa-paw"></i> Mon Site!</h1>
+                        <p>&copy; Copyright {{"now"|date('Y')}} - Binet Julien</p>
+                    </div>
+                    </div>
+
+
+
+            </section>
         </div>
     </div>
-
-
-
-{% endblock fos_user_content %}
+</div>
+</body>
+</html>
