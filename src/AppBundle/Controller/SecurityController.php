@@ -48,35 +48,10 @@ class SecurityController extends Controller
             ? $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue()
             : null;
 
-
-
-
-        /* Form registration */
-        $userManager = $this->get('fos_user.user_manager');
-        $dispatcher = $this->get('event_dispatcher');
-        $formFactory = $this->get('fos_user.registration.form.factory');
-
-        $user = $userManager->createUser();
-        $user->setEnabled(true);
-
-        $event = new GetResponseUserEvent($user, $request);
-        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
-
-        if (null !== $event->getResponse()) {
-            return $event->getResponse();
-        }
-
-        $form = $formFactory->createForm();
-        $form->setData($user);
-
-
-
-
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
             'error' => $error,
             'csrf_token' => $csrfToken,
-            'form' => $form->createView(),
         ));
     }
 
@@ -90,6 +65,23 @@ class SecurityController extends Controller
      */
     protected function renderLogin(array $data)
     {
+
+
+        /* Form registration */
+        $userManager = $this->get('fos_user.user_manager');
+        $dispatcher = $this->get('event_dispatcher');
+        $formFactory = $this->get('fos_user.registration.form.factory');
+
+        $user = $userManager->createUser();
+        $user->setEnabled(true);
+
+
+        $form = $formFactory->createForm();
+        $form->setData($user);
+
+        $data['form'] = $form->createView();
+
+
         return $this->render('FOSUserBundle:Security:login.html.twig', $data);
     }
 

@@ -33,7 +33,10 @@
         <div class="animate form login_form">
             <section class="login_content">
                 <form action="{{ path("fos_user_security_check") }}" method="post">
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('csrf_token') }}" />
+                    {% if csrf_token %}
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    {% endif %}
+                    {#<input type="hidden" name="_csrf_token" value="{{ csrf_token('csrf_token') }}" />#}
                     <h1>Connexion</h1>
                     <div>
                         <input type="text" class="form-control" required="required" placeholder="Nom d'utilisateur" id="username" name="_username" value="{{ last_username }}" />
