@@ -8,19 +8,14 @@ class FiltersExtension extends \Twig_Extension {
         return array(new \Twig_SimpleFilter('excerpt', array($this, 'wordsExcerpt')));
     }
 
-    public function wordsExcerpt($content, $wordsNumber, $endword="...")
+    public function wordsExcerpt($content, $max_words=100, $endword="...")
     {
-        $words = str_word_count($content, 1);
-
-        if (!empty($content) && (count($words) > $wordsNumber)) {
-            $output = array();
-            for ($wordsCounter = 0; $wordsCounter < $wordsNumber; $wordsCounter++) {
-                $output[] = $words[$wordsCounter];
-            }
-            return implode(' ', $output).$endword;
+        $text = strip_tags($content);
+        $words = explode(' ', $text);
+        if (count($words) > $max_words) {
+            return implode(' ', array_slice($words, 0, $max_words)) . $endword;
         }
-
-        return $content;
+        return $text;
 
     }
 

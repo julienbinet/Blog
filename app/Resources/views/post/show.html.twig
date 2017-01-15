@@ -1,40 +1,46 @@
 {% extends '::layout/baseAdmin.html.twig' %}
 
+{% block page_title %}{{ post.title }}{% endblock page_title %}
+
 {% block page_content %}
-    <h1>Article : {{ post.title }}</h1>
+    <div class="btn-group actions pull-right">
+    <a href="{{ path('post_index') }}">
+        <button class="btn btn-md btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Retour">
+            <i class="fa fa-reply"></i>
+        </button>
+    </a>
+    <a href="{{ path('post_edit', { 'id': post.id }) }}">
+        <button class="btn btn-md btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Modifier">
+            <i class="fa fa-pencil"></i>
+        </button>
+    </a>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ post.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ post.title }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ post.content }}</td>
-            </tr>
-            <tr>
-                <th>Modifié le </th>
-                <td>{% if post.contentChanged %}{{ post.contentChanged|date('Y-m-d H:i:s') }}{% else %}{{ post.created|date('d/m/Y à H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+    {{ form_start(delete_form) }}
+    <button class="btn btn-md btn-danger" type="submit" data-placement="top" data-toggle="tooltip" data-original-title="Supprimer">
+        <i class="fa fa-trash-o"></i>
+    </button>
+    {{ form_end(delete_form) }}
+</div>
+    <h1>{{ post.title }}</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('post_index') }}">Retour à la liste</a>
-        </li>
-        <li>
-            <a href="{{ path('post_edit', { 'id': post.id }) }}">Modifier</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+    <div class="x_panel">
+
+        <div class="x_title">
+
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+            <img src="{{ post.image.AssetPath|imagine_filter('my_thumb') }}" class='img-responsive' alt="{{ post.image.name }}" >
+            {{ post.content|raw }}
+
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <p>Modifié le : {% if post.contentChanged %}{{ post.contentChanged|date('d/m/Y H:i:s') }}{% else %}{{ post.created|date('d/m/Y à H:i:s') }}{% endif %}</p>
+        <p>Auteur : {{ post.idUser.username }}</p>
+        </div>
+    </div>
+
+
+
+
 {% endblock %}

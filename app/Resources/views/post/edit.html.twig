@@ -5,20 +5,22 @@
 
     {{ form_start(edit_form) }}
     {{ form_widget(edit_form) }}
+
+
     <input type="submit" value="Valider les modifications" />
     {{ form_end(edit_form) }}
-    {#
-        <ul>
-            <li>
-                #}
+
+
     <a href="{{ path('post_index') }}">
         <button class="bttn-unite bttn-sm bttn-success">Retour à la liste</button>
     </a>
-    {#  </li>
-      <li>#}
+
     {{ form_start(delete_form) }}
     <button type="submit" class="bttn-unite bttn-sm bttn-danger">Supprimer</button>
     {{ form_end(delete_form) }}
-    {# </li>
- </ul>#}
+
+
+
 {% endblock %}
+
+

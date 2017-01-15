@@ -1,31 +1,6 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Mon site | Connexion</title>
-
-    <!-- Bootstrap -->
-    <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="{{ asset('assets/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <!-- Animate.css -->
-    <link href="{{ asset('assets/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
-
-    <!-- Custom Theme Style -->
-    <link href="{{ asset('css/custom.min.css') }}" rel="stylesheet">
-</head>
-
-<body class="login">
-<div>
-
-    {% trans_default_domain 'FOSUserBundle' %}
-
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block body %}
     <a class="hiddenanchor" id="signup"></a>
     <a class="hiddenanchor" id="signin"></a>
 
@@ -36,8 +11,12 @@
                     {% if csrf_token %}
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                     {% endif %}
-                    {#<input type="hidden" name="_csrf_token" value="{{ csrf_token('csrf_token') }}" />#}
                     <h1>Connexion</h1>
+                    {% if error %}
+                        <div class="form-group has-error">
+                            <div class="control-label">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        </div>
+                    {% endif %}
                     <div>
                         <input type="text" class="form-control" required="required" placeholder="Nom d'utilisateur" id="username" name="_username" value="{{ last_username }}" />
                     </div>
@@ -74,7 +53,13 @@
 
                 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
                 <h1>Créez votre compte</h1>
-                {{ form_widget(form) }}
+                {#{{ form_widget(form) }}#}
+
+                {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder' : "Votre Email"} }) }}
+                {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder' : "Nom d'utilisateur"} }) }}
+                {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder' : "Mot de passe"} }) }}
+                {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder' : "Confirmez votre mot de passe"} }) }}
+
                 <div>
                     <input type="submit" class="btn btn-primary"  value="{{ 'registration.submit'|trans }}" />
                 </div>
@@ -91,7 +76,7 @@
                     <br />
 
                     <div>
-                        <h1><i class="fa fa-paw"></i> Mon Site!</h1>
+                        <div><i class="fa fa-paw"></i> Mon Site!</div>
                         <p>&copy; Copyright {{"now"|date('Y')}} - Binet Julien</p>
                     </div>
                     </div>
@@ -101,6 +86,5 @@
             </section>
         </div>
     </div>
-</div>
-</body>
-</html>
+
+{% endblock body %}
