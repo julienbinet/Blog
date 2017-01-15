@@ -26,15 +26,15 @@
 
     <div class="x_panel">
 
-        <div class="x_title">
-
-        </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
-            <img src="{{ post.image.AssetPath|imagine_filter('my_thumb') }}" class='img-responsive' alt="{{ post.image.name }}" >
+            <div class="x_title"><h3>Contenu</h3></div>
             {{ post.content|raw }}
 
         </div>
         <div class="col-md-3 col-sm-3 col-xs-12">
+            <div class="x_title"><h3>Image principale</h3></div>
+            <img src="{{ post.image.AssetPath|imagine_filter('my_thumb') }}" class='img-responsive' alt="{{ post.image.name }}" >
+            <div class="x_title"><h3>Informations</h3></div>
             <p>Modifié le : {% if post.contentChanged %}{{ post.contentChanged|date('d/m/Y H:i:s') }}{% else %}{{ post.created|date('d/m/Y à H:i:s') }}{% endif %}</p>
         <p>Auteur : {{ post.idUser.username }}</p>
         </div>

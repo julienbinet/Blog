@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Post controller.
@@ -22,9 +23,21 @@ class PostController extends Controller
      */
     public function indexAction()
     {
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $autorized = $user->hasRole("ROLE_ADMIN");
+
         $em = $this->getDoctrine()->getManager();
 
-        $posts = $em->getRepository('AppBundle:Post')->findAll();
+
+        if ($autorized){
+            $posts = $em->getRepository('AppBundle:Post')->findAll();
+        }else{
+//            $posts = $em->getRepository('AppBundle:Post')->findAll();
+            $posts = $em->getRepository('AppBundle:Post')->findBy(array("idUser"=>$user->getId()));
+
+        }
 
         return $this->render('post/index.html.twig', array(
             'posts' => $posts,
@@ -132,6 +145,6 @@ class PostController extends Controller
             ->setAction($this->generateUrl('post_delete', array('id' => $post->getId())))
             ->setMethod('DELETE')
             ->getForm()
-        ;
+            ;
     }
 }
