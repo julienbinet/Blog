@@ -34,6 +34,15 @@
                             </ul>
                         </li>
                     </ul>
+                    <ul class="nav side-menu">
+                        <li>
+                            <a><i class="fa fa-user"></i> Catégories <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a class="menu-item" href="{{ path('admin_category_new') }}">Ajouter</a> </li>
+                                <li><a class="menu-item" href="{{ path('admin_category_index') }}">Liste</a></l i>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             {% endif %}
 
@@ -42,8 +51,8 @@
                     <li>
                         <a><i class="fa fa-book"></i> Articles <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a class="menu-item" href="{{ path('post_new') }}">Ajouter</a> </li>
-                            <li><a class="menu-item" href="{{ path('post_index') }}">Liste</a></l i>
+                            <li><a class="menu-item" href="{{ path('admin_post_new') }}">Ajouter</a> </li>
+                            <li><a class="menu-item" href="{{ path('admin_post_index') }}">Liste</a></l i>
                         </ul>
                     </li>
                 </ul>

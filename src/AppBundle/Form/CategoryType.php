@@ -5,29 +5,36 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 
-class MediaType extends AbstractType
+class CategoryType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file',FileType::class, array("label"=> false, "required"=> false ) )
-            //->add('name', null, array("attr" => array('class' => "form-control")))
-        ;
+            ->add('name', null, ["label" => "Nom"])
+            ->add('image', MediaType::class, ['label' => ""])  ;
     }
-
+    
     /**
-     * @param OptionsResolver $resolver
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Media'
+            'data_class' => 'AppBundle\Entity\Category'
         ));
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'appbundle_category';
+    }
+
+
 }

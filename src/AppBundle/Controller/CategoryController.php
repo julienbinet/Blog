@@ -48,6 +48,8 @@ class CategoryController extends Controller
             $em->persist($category);
             $em->flush($category);
 
+            $this->get('session')->getFlashBag()->add('success', "La catégorie a bien été ajoutée");
+
             return $this->redirectToRoute('admin_category_show', array('id' => $category->getId()));
         }
 
@@ -87,6 +89,7 @@ class CategoryController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->get('session')->getFlashBag()->add('success', "La catégorie a bien été modifiée");
 
             return $this->redirectToRoute('admin_category_edit', array('id' => $category->getId()));
         }
@@ -113,6 +116,8 @@ class CategoryController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($category);
             $em->flush($category);
+
+            $this->get('session')->getFlashBag()->add('success', "La catégorie a bien été supprimée");
         }
 
         return $this->redirectToRoute('admin_category_index');

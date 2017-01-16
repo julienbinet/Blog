@@ -2,7 +2,6 @@
 
 {% block stylesheets %}
 
-
     <!-- iCheck -->
     <link href="{{ asset('assets/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
     <!-- Datatables -->
@@ -13,8 +12,6 @@
     <link href="{{ asset('assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
 
 {% endblock %}
-
-
 
 {% block page_content %}
 
@@ -28,7 +25,7 @@
 
         <div class="x_title">
 
-            <a href="{{ path('post_new') }}" class="btn btn-success pull-right">Nouvel article</a>
+            <a href="{{ path('admin_post_new') }}" class="btn btn-success pull-right">Nouvel article</a>
             <h2>Liste des articles</h2>
             <div class="clearfix"></div>
         </div>
@@ -52,19 +49,19 @@
                 {% for post in posts %}
                     <tr>
                         <td>
-                            <a href="{{ path('post_show', { 'id' : post.id }) }}">
+                            <a href="{{ path('admin_post_show', { 'id' : post.id }) }}">
                                 <img src="{{ post.image.AssetPath|imagine_filter('my_thumb_mini') }}" class='img-responsive' alt="{{ post.image.name }}" >
                             </a>
                         </td>
-                        <td><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.title }}</a></td>
+                        <td><a href="{{ path('admin_post_show', { 'id': post.id }) }}">{{ post.title }}</a></td>
                         <td>{{ post.content|excerpt(15) }}</td>
                         <td>{{ post.category.name }}</td>
                         <td>{% if post.published %}<i class="fa fa-2x text-success fa-check-circle"></i>{% else  %}<i class="fa fa-2x text-success fa-file-o"></i>{% endif  %} </td>
                         <td>{% if post.contentChanged %}{{ post.contentChanged|date('d/m/Y à H:i:s') }}{% else %}{{ post.created|date('d/m/Y à H:i:s') }}{% endif %}</td>
                         <td>{{ post.idUser.username }}</td>
                         <td>
-                            <a href="{{ path('post_show', { 'id': post.id }) }}"><i class="fa fa-lg fa-eye"></i></a>
-                            <a href="{{ path('post_edit', { 'id': post.id }) }}"><i class="fa fa-lg  fa-edit"></i></a>
+                            <a href="{{ path('admin_post_show', { 'id': post.id }) }}"><i class="fa fa-lg fa-eye"></i></a>
+                            <a href="{{ path('admin_post_edit', { 'id': post.id }) }}"><i class="fa fa-lg fa-edit"></i></a>
                         </td>
                     </tr>
                 {% endfor %}

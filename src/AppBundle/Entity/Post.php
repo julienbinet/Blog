@@ -24,7 +24,7 @@ class Post
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="posts")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", cascade={"persist"})
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;

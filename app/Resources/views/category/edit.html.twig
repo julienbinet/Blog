@@ -1,21 +1,47 @@
-{% extends 'base.html.twig' %}
+{% extends '::layout/baseAdmin.html.twig' %}
 
-{% block body %}
-    <h1>Category edit</h1>
+{% block stylesheets %}
+
+    <!-- Switchery -->
+    <link href="{{ asset('assets/vendors/switchery/dist/switchery.min.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block page_content %}
+
+
+<div class="page-title">
+    <div class="title_left">
+        <h3>Modification de la catégorie</h3>
+    </div>
+</div>
+
+<div class="x_panel">
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+    <input type="submit"  class="btn btn-round btn-success" value="Valider les modifications" />
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_category_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <a href="{{ path('admin_category_index') }}">
+        <button class="btn btn-round btn-primary">Retour à la liste</button>
+    </a>
+
+    {{ form_start(delete_form) }}
+    <button type="submit" class="bttn-unite bttn-sm bttn-danger">Supprimer</button>
+    {{ form_end(delete_form) }}
+
+</div>
+
+
 {% endblock %}
+
+
+{% block javascripts %}
+
+    <!-- Switchery -->
+    <script src="{{ asset('assets/vendors/switchery/dist/switchery.min.js') }}"></script>
+
+{% endblock %}
+
+

@@ -4,12 +4,12 @@
 
 {% block page_content %}
     <div class="btn-group actions pull-right">
-    <a href="{{ path('post_index') }}">
+    <a href="{{ path('admin_post_index') }}">
         <button class="btn btn-md btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Retour">
             <i class="fa fa-reply"></i>
         </button>
     </a>
-    <a href="{{ path('post_edit', { 'id': post.id }) }}">
+    <a href="{{ path('admin_post_edit', { 'id': post.id }) }}">
         <button class="btn btn-md btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Modifier">
             <i class="fa fa-pencil"></i>
         </button>
@@ -35,8 +35,9 @@
             <div class="x_title"><h3>Image principale</h3></div>
             <img src="{{ post.image.AssetPath|imagine_filter('my_thumb') }}" class='img-responsive' alt="{{ post.image.name }}" >
             <div class="x_title"><h3>Informations</h3></div>
-            <p>Modifié le : {% if post.contentChanged %}{{ post.contentChanged|date('d/m/Y H:i:s') }}{% else %}{{ post.created|date('d/m/Y à H:i:s') }}{% endif %}</p>
+        <p>Catégorie : <a href="{{ path('admin_category_show',{"id" : post.category.id}) }}">{{ post.category.name}}</a></p>
         <p>Auteur : {{ post.idUser.username }}</p>
+            <p>Modifié le : {% if post.contentChanged %}{{ post.contentChanged|date('d/m/Y H:i:s') }}{% else %}{{ post.created|date('d/m/Y à H:i:s') }}{% endif %}</p>
         </div>
     </div>
 

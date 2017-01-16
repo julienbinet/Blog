@@ -30,9 +30,7 @@ class PostType extends AbstractType
                 'config' => array(
                     'uiColor' => '#2A3F54',
                 )))
-            ->add('image', MediaType::class,array(
-                'required' => true,
-            ));
+            ->add('image', MediaType::class,array( ));
     }
 
     /**

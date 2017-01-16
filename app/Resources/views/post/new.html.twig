@@ -20,13 +20,12 @@
 
         {{ form_start(form) }}
         {{ form_widget(form) }}
-        {#<input type="submit" value="Valider" />#}
         <button type="submit" class="btn btn-round btn-success">Valider</button>
         {{ form_end(form) }}
 
         <ul>
             <li>
-                <a href="{{ path('post_index') }}">Retour à la liste</a>
+                <a href="{{ path('admin_post_index') }}">Retour à la liste des articles</a>
             </li>
         </ul>
 

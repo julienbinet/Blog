@@ -24,7 +24,7 @@ class Category
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Post", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="category")
      */
     private $posts;
 

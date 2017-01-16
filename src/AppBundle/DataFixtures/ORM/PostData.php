@@ -24,7 +24,7 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface {
         $post2->setTitle("Bonne Année 2017 !!!");
         $post2->setContent("Je vous  souhaites tout mes voeux etc ....");
         $post2->setIdUser($this->getReference('user1'));
-        $post1->setCategory($this->getReference('category2'));
+        $post2->setCategory($this->getReference('category2'));
         $post2->setPublished(1);
         $manager->persist($post2);
 
@@ -35,7 +35,7 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface {
 <br>
 Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turpis tristique, blandit mauris nec, finibus ligula. Ut sit amet magna a purus auctor mattis eget vel est. Praesent nec lobortis nulla. Aliquam sagittis nunc vel urna ullamcorper lacinia. Phasellus sit amet blandit mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis iaculis eu purus a laoreet. Nullam blandit, sapien id lobortis consectetur, purus elit egestas ante, quis sollicitudin nulla tortor ac risus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas et laoreet orci. Aenean ultrices est sed quam dignissim suscipit. ");
         $post3->setIdUser($this->getReference('user2'));
-        $post1->setCategory($this->getReference('category3'));
+        $post3->setCategory($this->getReference('category3'));
         $post3->setPublished(1);
         $manager->persist($post3);
 
@@ -44,7 +44,7 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post4->setTitle("Nouvel article");
         $post4->setContent("Etiam non tellus eu mauris laoreet finibus. Aenean consequat quam in arcu dictum mattis. Donec tincidunt lectus non urna aliquam. ");
         $post4->setIdUser($this->getReference('user1'));
-        $post1->setCategory($this->getReference('category4'));
+        $post4->setCategory($this->getReference('category4'));
         $post4->setPublished(1);
         $manager->persist($post4);
 
@@ -53,7 +53,7 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post5->setTitle("Encore de la neige sur toute la France");
         $post5->setContent("Aenean consequat quam in arcu dictum mattis. Donec tincidunt");
         $post5->setIdUser($this->getReference('user1'));
-        $post1->setCategory($this->getReference('category5'));
+        $post5->setCategory($this->getReference('category5'));
         $post5->setPublished(1);
         $manager->persist($post5);
 
@@ -62,7 +62,7 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post6->setTitle("Vive l'été (et oui ça passe vite)");
         $post6->setContent("Nunc laoreet porttitor faucibus. Etiam in massa ac dui condimentum scelerisque. Nam eu iaculis libero. Sed faucibus semper sem, sit. ");
         $post6->setIdUser($this->getReference('user4'));
-        $post1->setCategory($this->getReference('category6'));
+        $post6->setCategory($this->getReference('category6'));
         $post6->setPublished(1);
         $manager->persist($post6);
 
@@ -72,7 +72,7 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post7->setTitle("La saison des festivals commence !!!");
         $post7->setContent("Proin lacus dolor, malesuada ut imperdiet non, elementum at nisl. Curabitur vel posuere mi, vel semper sem. Mauris a mi. ");
         $post7->setIdUser($this->getReference('user1'));
-        $post1->setCategory($this->getReference('category3'));
+        $post7->setCategory($this->getReference('category3'));
         $post7->setPublished(0);
         $manager->persist($post7);
 
@@ -82,7 +82,7 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post8->setTitle("C'est la rentrée");
         $post8->setContent("Vivamus vitae porta quam, non fringilla ex. Suspendisse sodales pulvinar metus eget facilisis. Quisque elementum justo eget dui pulvinar, sit.");
         $post8->setIdUser($this->getReference('user1'));
-        $post1->setCategory($this->getReference('category2'));
+        $post8->setCategory($this->getReference('category2'));
         $post8->setPublished(1);
         $manager->persist($post8);
 
@@ -92,7 +92,7 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post9->setTitle("Les premieres vacances");
         $post9->setContent("Cras a justo tempor, fringilla dui sit amet, dapibus lectus. Fusce egestas ligula vel mi suscipit, vitae commodo dui aliquam. ");
         $post9->setIdUser($this->getReference('user5'));
-        $post1->setCategory($this->getReference('category3'));
+        $post9->setCategory($this->getReference('category3'));
         $post9->setPublished(0);
         $manager->persist($post9);
 
@@ -101,7 +101,7 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post10->setTitle("Vive les fêtes de fin d'année");
         $post10->setContent("ça commence à devenir long");
         $post10->setIdUser($this->getReference('user1'));
-        $post1->setCategory($this->getReference('category6'));
+        $post10->setCategory($this->getReference('category6'));
         $post10->setPublished(1);
         $manager->persist($post10);
 
@@ -110,7 +110,7 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post11->setTitle("Encore un effort");
         $post11->setContent("Je mettrai du contenu intéressant plus tard");
         $post11->setIdUser($this->getReference('user5'));
-        $post1->setCategory($this->getReference('category2'));
+        $post11->setCategory($this->getReference('category2'));
         $post11->setPublished(1);
         $manager->persist($post11);
 
@@ -119,7 +119,7 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post12->setTitle("Dernier Article créé");
         $post12->setContent("C'est fini...");
         $post12->setIdUser($this->getReference('user2'));
-        $post1->setCategory($this->getReference('category2'));
+        $post12->setCategory($this->getReference('category2'));
         $post12->setPublished(1);
         $manager->persist($post12);
 

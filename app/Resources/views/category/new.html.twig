@@ -1,16 +1,39 @@
-{% extends 'base.html.twig' %}
+{% extends '::layout/baseAdmin.html.twig' %}
 
-{% block body %}
-    <h1>Category creation</h1>
+{% block stylesheets %}
 
-    {{ form_start(form) }}
+    <!-- Switchery -->
+    <link href="{{ asset('assets/vendors/switchery/dist/switchery.min.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+
+{% block page_content %}
+
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Nouvelle catégorie</h3>
+        </div>
+    </div>
+
+    <div class="x_panel">
+
+        {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <button type="submit" class="btn btn-round btn-success">Valider</button>
+        {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_category_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        <ul>
+            <li>
+                <a href="{{ path('admin_category_index') }}">Retour à la liste des catégories</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    <!-- Switchery -->
+    <script src="{{ asset('assets/vendors/switchery/dist/switchery.min.js') }}"></script>
+
 {% endblock %}
