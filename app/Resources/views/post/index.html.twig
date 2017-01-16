@@ -41,6 +41,7 @@
                     <th></th>
                     <th>Titre</th>
                     <th>Contenu</th>
+                    <th>Catégorie</th>
                     <th>Visibilité</th>
                     <th>Modifié le</th>
                     <th>Auteur</th>
@@ -57,6 +58,7 @@
                         </td>
                         <td><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.title }}</a></td>
                         <td>{{ post.content|excerpt(15) }}</td>
+                        <td>{{ post.category.name }}</td>
                         <td>{% if post.published %}<i class="fa fa-2x text-success fa-check-circle"></i>{% else  %}<i class="fa fa-2x text-success fa-file-o"></i>{% endif  %} </td>
                         <td>{% if post.contentChanged %}{{ post.contentChanged|date('d/m/Y à H:i:s') }}{% else %}{{ post.created|date('d/m/Y à H:i:s') }}{% endif %}</td>
                         <td>{{ post.idUser.username }}</td>
