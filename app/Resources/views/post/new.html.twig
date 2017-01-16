@@ -1,17 +1,26 @@
 {% extends '::layout/baseAdmin.html.twig' %}
 
 {% block page_content %}
-    <h1>Nouvel Article</h1>
 
-    {{ form_start(form) }}
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Nouvel Article</h3>
+        </div>
+    </div>
+
+    <div class="x_panel">
+
+        {{ form_start(form) }}
         {{ form_widget(form) }}
         {#<input type="submit" value="Valider" />#}
-    <button type="submit" class="btn btn-round btn-success">Valider</button>
-    {{ form_end(form) }}
+        <button type="submit" class="btn btn-round btn-success">Valider</button>
+        {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('post_index') }}">Retour à la liste</a>
-        </li>
-    </ul>
+        <ul>
+            <li>
+                <a href="{{ path('post_index') }}">Retour à la liste</a>
+            </li>
+        </ul>
+
+    </div>
 {% endblock %}

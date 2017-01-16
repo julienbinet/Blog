@@ -36,6 +36,14 @@ class Post
      */
     private $title;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="published", type="boolean")
+     */
+    private $published;
+
     /**
      * @ORM\Column(length=16, nullable=true)
      */
@@ -311,5 +319,29 @@ class Post
     public function getContentChanged()
     {
         return $this->contentChanged;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     *
+     * @return Post
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 }

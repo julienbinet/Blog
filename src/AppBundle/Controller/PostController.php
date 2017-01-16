@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Post controller.
  *
- * @Route("post")
+ * @Route("admin/post")
  */
 class PostController extends Controller
 {
@@ -34,7 +34,6 @@ class PostController extends Controller
         if ($autorized){
             $posts = $em->getRepository('AppBundle:Post')->findAll();
         }else{
-//            $posts = $em->getRepository('AppBundle:Post')->findAll();
             $posts = $em->getRepository('AppBundle:Post')->findBy(array("idUser"=>$user->getId()));
 
         }
@@ -61,6 +60,8 @@ class PostController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush($post);
+
+            $this->get('session')->getFlashBag()->add('success', "L'article a bien été créé");
 
             return $this->redirectToRoute('post_show', array('id' => $post->getId()));
         }
@@ -101,7 +102,7 @@ class PostController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->get('session')->getFlashBag()->add('success', "L'article a bien été modifié");
             return $this->redirectToRoute('post_edit', array('id' => $post->getId()));
         }
 
@@ -127,6 +128,7 @@ class PostController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($post);
             $em->flush($post);
+            $this->get('session')->getFlashBag()->add('success', "L'article a bien été supprimé");
         }
 
         return $this->redirectToRoute('post_index');

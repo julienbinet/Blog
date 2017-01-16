@@ -2,10 +2,7 @@
 
 {% block stylesheets %}
 
-    <!-- Bootstrap -->
-    <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="{{ asset('assets/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+
     <!-- iCheck -->
     <link href="{{ asset('assets/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
     <!-- Datatables -->
@@ -44,6 +41,7 @@
                     <th></th>
                     <th>Titre</th>
                     <th>Contenu</th>
+                    <th>Visibilité</th>
                     <th>Modifié le</th>
                     <th>Auteur</th>
                     <th>Actions</th>
@@ -59,6 +57,7 @@
                         </td>
                         <td><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.title }}</a></td>
                         <td>{{ post.content|excerpt(15) }}</td>
+                        <td>{% if post.published %}<i class="fa fa-2x text-success fa-check-circle"></i>{% else  %}<i class="fa fa-2x text-success fa-file-o"></i>{% endif  %} </td>
                         <td>{% if post.contentChanged %}{{ post.contentChanged|date('d/m/Y à H:i:s') }}{% else %}{{ post.created|date('d/m/Y à H:i:s') }}{% endif %}</td>
                         <td>{{ post.idUser.username }}</td>
                         <td>
