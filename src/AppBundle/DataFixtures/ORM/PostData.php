@@ -17,6 +17,9 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface {
         $post1->setIdUser($this->getReference('user1'));
         $post1->setCategory($this->getReference('category1'));
         $post1->setPublished(1);
+        $post1->addTag($this->getReference('tag1'));
+        $post1->addTag($this->getReference('tag2'));
+        $post1->addTag($this->getReference('tag3'));
         $manager->persist($post1);
 
         $post2 = new Post();
@@ -26,6 +29,11 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface {
         $post2->setIdUser($this->getReference('user1'));
         $post2->setCategory($this->getReference('category2'));
         $post2->setPublished(1);
+        $post2->addTag($this->getReference('tag1'));
+        $post2->addTag($this->getReference('tag4'));
+        $post2->addTag($this->getReference('tag5'));
+        $post2->addTag($this->getReference('tag6'));
+        $post2->addTag($this->getReference('tag7'));
         $manager->persist($post2);
 
         $post3 = new Post();
@@ -37,6 +45,9 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post3->setIdUser($this->getReference('user2'));
         $post3->setCategory($this->getReference('category3'));
         $post3->setPublished(1);
+        $post3->addTag($this->getReference('tag1'));
+        $post3->addTag($this->getReference('tag8'));
+        $post3->addTag($this->getReference('tag9'));
         $manager->persist($post3);
 
         $post4 = new Post();
@@ -46,6 +57,8 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post4->setIdUser($this->getReference('user1'));
         $post4->setCategory($this->getReference('category4'));
         $post4->setPublished(1);
+        $post4->addTag($this->getReference('tag10'));
+        $post4->addTag($this->getReference('tag1'));
         $manager->persist($post4);
 
         $post5 = new Post();
@@ -55,6 +68,8 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post5->setIdUser($this->getReference('user1'));
         $post5->setCategory($this->getReference('category5'));
         $post5->setPublished(1);
+        $post5->addTag($this->getReference('tag3'));
+        $post5->addTag($this->getReference('tag11'));
         $manager->persist($post5);
 
         $post6 = new Post();
@@ -64,6 +79,9 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post6->setIdUser($this->getReference('user4'));
         $post6->setCategory($this->getReference('category6'));
         $post6->setPublished(1);
+        $post6->addTag($this->getReference('tag3'));
+        $post6->addTag($this->getReference('tag6'));
+        $post6->addTag($this->getReference('tag15'));
         $manager->persist($post6);
 
 
@@ -103,6 +121,11 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post10->setIdUser($this->getReference('user1'));
         $post10->setCategory($this->getReference('category6'));
         $post10->setPublished(1);
+        $post10->addTag($this->getReference('tag1'));
+        $post10->addTag($this->getReference('tag2'));
+        $post10->addTag($this->getReference('tag12'));
+        $post10->addTag($this->getReference('tag13'));
+        $post10->addTag($this->getReference('tag14'));
         $manager->persist($post10);
 
         $post11 = new Post();
@@ -112,6 +135,8 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post11->setIdUser($this->getReference('user5'));
         $post11->setCategory($this->getReference('category2'));
         $post11->setPublished(1);
+        $post11->addTag($this->getReference('tag3'));
+        $post11->addTag($this->getReference('tag1'));
         $manager->persist($post11);
 
         $post12 = new Post();
@@ -127,7 +152,7 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
     }
 
     public function getOrder() {
-        return 4;
+        return 5;
     }
 
 }

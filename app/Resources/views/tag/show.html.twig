@@ -1,15 +1,15 @@
 {% extends '::layout/baseAdmin.html.twig' %}
 
-{% block page_title %}{{ category.title }}{% endblock page_title %}
+{% block page_title %}{{ tag.title }}{% endblock page_title %}
 
 {% block page_content %}
     <div class="btn-group actions pull-right">
-        <a href="{{ path('admin_category_index') }}">
+        <a href="{{ path('admin_tag_index') }}">
             <button class="btn btn-md btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Retour">
                 <i class="fa fa-reply"></i>
             </button>
         </a>
-        <a href="{{ path('admin_category_edit', { 'id': category.id }) }}">
+        <a href="{{ path('admin_tag_edit', { 'id': tag.id }) }}">
             <button class="btn btn-md btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Modifier">
                 <i class="fa fa-pencil"></i>
             </button>
@@ -25,18 +25,16 @@
     <div class="x_panel">
 
         <div class="col-md-9 col-sm-9 col-xs-12">
-            <div class="x_title"><h3>{{ category.name }}</h3></div>
-            Nombres d'articles : {{ category.posts|length }}
+            <div class="x_title"><h3>{{ tag.name }}</h3></div>
+            Nombres d'articles : {{ tag.posts|length }}
 
         </div>
         <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="x_title"><h3>Image principale</h3></div>
-            <img src="{{ category.image.AssetPath|imagine_filter('my_thumb') }}" class='img-responsive' alt="{{ category.image.name }}" >
             <div class="x_title"><h3>Articles</h3></div>
             <ul>
-            {% for post in category.posts|slice(0, 10) %}
-                <li><a href="{{ path('admin_post_show', { 'id': post.id }) }}">{{ post.title }}</a></li>
-            {% endfor %}
+                {% for post in tag.posts|slice(0, 10) %}
+                    <li><a href="{{ path('admin_post_show', { 'id': post.id }) }}">{{ post.title }}</a></li>
+                {% endfor %}
             </ul>
         </div>
     </div>

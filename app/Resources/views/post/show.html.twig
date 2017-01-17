@@ -4,23 +4,23 @@
 
 {% block page_content %}
     <div class="btn-group actions pull-right">
-    <a href="{{ path('admin_post_index') }}">
-        <button class="btn btn-md btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Retour">
-            <i class="fa fa-reply"></i>
-        </button>
-    </a>
-    <a href="{{ path('admin_post_edit', { 'id': post.id }) }}">
-        <button class="btn btn-md btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Modifier">
-            <i class="fa fa-pencil"></i>
-        </button>
-    </a>
+        <a href="{{ path('admin_post_index') }}">
+            <button class="btn btn-md btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Retour">
+                <i class="fa fa-reply"></i>
+            </button>
+        </a>
+        <a href="{{ path('admin_post_edit', { 'id': post.id }) }}">
+            <button class="btn btn-md btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Modifier">
+                <i class="fa fa-pencil"></i>
+            </button>
+        </a>
 
-    {{ form_start(delete_form) }}
-    <button class="btn btn-md btn-danger" type="submit" data-placement="top" data-toggle="tooltip" data-original-title="Supprimer">
-        <i class="fa fa-trash-o"></i>
-    </button>
-    {{ form_end(delete_form) }}
-</div>
+        {{ form_start(delete_form) }}
+        <button class="btn btn-md btn-danger" type="submit" data-placement="top" data-toggle="tooltip" data-original-title="Supprimer">
+            <i class="fa fa-trash-o"></i>
+        </button>
+        {{ form_end(delete_form) }}
+    </div>
     <h1>{{ post.title }}</h1>
 
 
@@ -35,8 +35,13 @@
             <div class="x_title"><h3>Image principale</h3></div>
             <img src="{{ post.image.AssetPath|imagine_filter('my_thumb') }}" class='img-responsive' alt="{{ post.image.name }}" >
             <div class="x_title"><h3>Informations</h3></div>
-        <p>Catégorie : <a href="{{ path('admin_category_show',{"id" : post.category.id}) }}">{{ post.category.name}}</a></p>
-        <p>Auteur : {{ post.idUser.username }}</p>
+            <p>Catégorie : <a href="{{ path('admin_category_show',{"id" : post.category.id}) }}">{{ post.category.name}}</a></p>
+            <p>Tags :
+                {% for tag in post.tags %}
+                <a href="{{ path('admin_tag_show',{"id" : tag.id}) }}">{{ tag.name}}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <p>Auteur : {{ post.idUser.username }}</p>
             <p>Modifié le : {% if post.contentChanged %}{{ post.contentChanged|date('d/m/Y H:i:s') }}{% else %}{{ post.created|date('d/m/Y à H:i:s') }}{% endif %}</p>
         </div>
     </div>

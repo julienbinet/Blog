@@ -30,16 +30,22 @@
                             <a><i class="fa fa-user"></i> Utilisateurs <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a class="menu-item" href="#">Ajouter</a> </li>
-                                <li><a class="menu-item" href="{{ path('admin_users') }}">Liste</a></l i>
+                                <li><a class="menu-item" href="{{ path('admin_users') }}">Liste</a></li>
                             </ul>
                         </li>
-                    </ul>
-                    <ul class="nav side-menu">
+
                         <li>
                             <a><i class="fa fa-user"></i> Catégories <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a class="menu-item" href="{{ path('admin_category_new') }}">Ajouter</a> </li>
-                                <li><a class="menu-item" href="{{ path('admin_category_index') }}">Liste</a></l i>
+                                <li><a class="menu-item" href="{{ path('admin_category_index') }}">Liste</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a><i class="fa fa-user"></i> Tags <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a class="menu-item" href="{{ path('admin_tag_new') }}">Ajouter</a> </li>
+                                <li><a class="menu-item" href="{{ path('admin_tag_index') }}">Liste</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -52,7 +58,7 @@
                         <a><i class="fa fa-book"></i> Articles <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a class="menu-item" href="{{ path('admin_post_new') }}">Ajouter</a> </li>
-                            <li><a class="menu-item" href="{{ path('admin_post_index') }}">Liste</a></l i>
+                            <li><a class="menu-item" href="{{ path('admin_post_index') }}">Liste</a></li>
                         </ul>
                     </li>
                 </ul>

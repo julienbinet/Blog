@@ -1,0 +1,32 @@
+{% extends '::layout/baseAdmin.html.twig' %}
+
+{% block page_content %}
+
+
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Modification du tag</h3>
+        </div>
+    </div>
+
+    <div class="x_panel">
+
+        {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit"  class="btn btn-round btn-success" value="Valider les modifications" />
+        {{ form_end(edit_form) }}
+
+        <a href="{{ path('admin_tag_index') }}">
+            <button class="btn btn-round btn-primary">Retour à la liste</button>
+        </a>
+
+        {{ form_start(delete_form) }}
+        <button type="submit" class="bttn-unite bttn-sm bttn-danger">Supprimer</button>
+        {{ form_end(delete_form) }}
+
+    </div>
+
+
+{% endblock %}
+
+

@@ -24,6 +24,7 @@ class UserData extends AbstractFixture implements FixtureInterface, ContainerAwa
         $user1->setEmail('julien.binet.27@gmail.com');
         $user1->setEnabled(1);
         $user1->setPassword($this->container->get('security.encoder_factory')->getEncoder($user1)->encodePassword('julien', $user1->getSalt()));
+        $user1->addRole('ROLE_AUTHOR');
         $manager->persist($user1);
 
         $user2 = new User();
@@ -66,6 +67,7 @@ class UserData extends AbstractFixture implements FixtureInterface, ContainerAwa
         $user7->setEmail('admin@gmail.com');
         $user7->setEnabled(1);
         $user7->setPassword($this->container->get('security.encoder_factory')->getEncoder($user7)->encodePassword('admin', $user7->getSalt()));
+        $user7->addRole('ROLE_ADMIN');
         $manager->persist($user7);
 
         $manager->flush();
