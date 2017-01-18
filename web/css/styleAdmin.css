@@ -9,3 +9,7 @@
 .text-success{
     color: #26b99a;
 }
+
+.tagsinput input{
+    width:auto;
+}

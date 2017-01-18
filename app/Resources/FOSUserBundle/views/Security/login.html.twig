@@ -59,6 +59,8 @@
                 {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder' : "Nom d'utilisateur"} }) }}
                 {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder' : "Mot de passe"} }) }}
                 {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder' : "Confirmez votre mot de passe"} }) }}
+                {{ form_label(form.image) }}
+                {{ form_widget(form.image) }}
 
                 <div>
                     <input type="submit" class="btn btn-primary"  value="{{ 'registration.submit'|trans }}" />

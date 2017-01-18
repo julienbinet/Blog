@@ -30,7 +30,7 @@ class Post
     private $category;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Tag", mappedBy="posts")
+     * @ORM\ManyToMany(targetEntity="Tag", mappedBy="posts",  cascade={"persist"})
      */
     private $tags;
 
@@ -73,9 +73,9 @@ class Post
 
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Media", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=true)
-     */
+ * @ORM\OneToOne(targetEntity="AppBundle\Entity\Media", cascade={"persist", "remove"})
+ * @ORM\JoinColumn(nullable=true)
+ */
     private $image;
 
     /**

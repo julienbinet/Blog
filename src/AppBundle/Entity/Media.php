@@ -83,9 +83,12 @@ class Media {
      */
     public function preUpload() {
 
-        if (null !== $this->file) {
+        if (null != $this->file) {
             $this->path = sha1(uniqid(mt_rand(), true)) . '.' . $this->file->guessExtension();
             $this->name = $this->file->getClientOriginalName();
+        }else{
+            $this->path = "default.png";
+            $this->name = "image par défaut";
         }
     }
 
@@ -96,7 +99,7 @@ class Media {
     public function upload() {
 
 
-        if (null !== $this->file) {
+        if ($this->file != null) {
             $this->file->move($this->getUploadDir(), $this->path);
             unset($this->file);
         }
@@ -116,7 +119,7 @@ class Media {
      * @ORM\PostRemove()
      */
     public function removeUpload() {
-        if (file_exists($this->temp)) {
+        if (file_exists($this->temp) && $this->path != "default.png") {
             unlink($this->temp);
         }
     }

@@ -18,7 +18,9 @@
 
     <div class="x_panel">
 
+        {% form_theme form '::modules/collection.html.twig' %}
         {{ form_start(form) }}
+
         {{ form_widget(form) }}
         <button type="submit" class="btn btn-round btn-success">Valider</button>
         {{ form_end(form) }}
@@ -37,5 +39,16 @@
 
     <!-- Switchery -->
     <script src="{{ asset('assets/vendors/switchery/dist/switchery.min.js') }}"></script>
+
+    {#<script src="{{ asset('js/collection.js') }}"></script>#}
+
+    {#<script type="text/javascript">#}
+        {#$('.my-selector').collection();#}
+    {#</script>#}
+
+    <!-- jQuery Tags Input -->
+    {#<script src="{{ asset('assets/vendors/jquery.tagsinput/src/jquery.tagsinput.js') }}"></script>#}
+
+    <script src="{{ asset('js/tag.js') }}"></script>
 
 {% endblock %}

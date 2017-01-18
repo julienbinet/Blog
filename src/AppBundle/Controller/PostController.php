@@ -58,7 +58,14 @@ class PostController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $post->setIdUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($post);
+
+            //rajouter la relation tag/post
+            foreach ($post->getTags() as $tag){
+                $post->addTag($tag);
+            }
+
             $em->flush($post);
 
             $this->get('session')->getFlashBag()->add('success', "L'article a bien été créé");
