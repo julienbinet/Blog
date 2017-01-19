@@ -12,7 +12,6 @@ use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use AppBundle\Form\MediaType;
 use AppBundle\Form\TagType;
 use AppBundle\Entity\Category;
-use AppBundle\Entity\Tag;
 
 class PostType extends AbstractType
 {

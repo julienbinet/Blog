@@ -3,24 +3,27 @@
 {% block page_title %}{{ category.title }}{% endblock page_title %}
 
 {% block page_content %}
-    <div class="btn-group actions pull-right">
-        <a href="{{ path('admin_category_index') }}">
-            <button class="btn btn-md btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Retour">
-                <i class="fa fa-reply"></i>
-            </button>
-        </a>
-        <a href="{{ path('admin_category_edit', { 'id': category.id }) }}">
-            <button class="btn btn-md btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Modifier">
-                <i class="fa fa-pencil"></i>
-            </button>
-        </a>
 
-        {{ form_start(delete_form) }}
-        <button class="btn btn-md btn-danger" type="submit" data-placement="top" data-toggle="tooltip" data-original-title="Supprimer">
-            <i class="fa fa-trash-o"></i>
-        </button>
-        {{ form_end(delete_form) }}
-    </div>
+    {% if is_granted('ROLE_ADMIN')%}
+        <div class="btn-group actions pull-right">
+            <a href="{{ path('admin_category_index') }}">
+                <button class="btn btn-md btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Retour">
+                    <i class="fa fa-reply"></i>
+                </button>
+            </a>
+            <a href="{{ path('admin_category_edit', { 'id': category.id }) }}">
+                <button class="btn btn-md btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Modifier">
+                    <i class="fa fa-pencil"></i>
+                </button>
+            </a>
+
+            {{ form_start(delete_form) }}
+            <button class="btn btn-md btn-danger" type="submit" data-placement="top" data-toggle="tooltip" data-original-title="Supprimer">
+                <i class="fa fa-trash-o"></i>
+            </button>
+            {{ form_end(delete_form) }}
+        </div>
+    {% endif %}
 
     <div class="x_panel">
 
@@ -34,9 +37,9 @@
             <img src="{{ category.image.AssetPath|imagine_filter('my_thumb') }}" class='img-responsive' alt="{{ category.image.name }}" >
             <div class="x_title"><h3>Articles</h3></div>
             <ul>
-            {% for post in category.posts|slice(0, 10) %}
-                <li><a href="{{ path('admin_post_show', { 'id': post.id }) }}">{{ post.title }}</a></li>
-            {% endfor %}
+                {% for post in category.posts|slice(0, 10) %}
+                    <li><a href="{{ path('admin_post_show', { 'id': post.id }) }}">{{ post.title }}</a></li>
+                {% endfor %}
             </ul>
         </div>
     </div>
