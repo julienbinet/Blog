@@ -13,9 +13,20 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+
+        $em = $this->getDoctrine()->getManager();
+        $findPosts = $em->getRepository('AppBundle:Post')->findBy(array("published" => 1));
+
+        $paginator  = $this->get('knp_paginator');
+        $posts = $paginator->paginate(
+            $findPosts, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            6/*limit per page*/
+        );
+
+
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+            'posts' => $posts,
         ]);
     }
 }
