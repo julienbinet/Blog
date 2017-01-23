@@ -42,6 +42,15 @@ twig:
     form_themes:
             - 'bootstrap_3_layout.html.twig'
 
+# Assetics Configuration
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+        scssphp:
+            formatter: 'Leafo\ScssPhp\Formatter\Compressed'
+
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -99,6 +108,7 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+#FOSUserBundle
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
@@ -110,6 +120,7 @@ fos_user:
             form:
                 type: AppBundle\Form\ProfileType
 
+#Thumb generator
 liip_imagine:
     resolvers:
        default:
@@ -126,6 +137,7 @@ liip_imagine:
             filters:
                 thumbnail: { size: [50, 50], mode: outbound }
 
+#Pagination
 knp_paginator:
     page_range: 5                      # default page range used in pagination control
     default_options:
