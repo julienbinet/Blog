@@ -1,7 +1,15 @@
-//inclure materialize.scss
+//inclure materialize.scss (ou pas)
+.menu .items {
+ display: inline-block;
+ left: 50%;
+ margin: 0 auto;
+ position: relative;
+ transform: translateX(-50%);
+}
 
-$var= #00b8d4;
 
-.ma-classe-2{
- background-color: #00b8d4;
+#footer{
+ h4{
+  text-align: center;
+ }
 }

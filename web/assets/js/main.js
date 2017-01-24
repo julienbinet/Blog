@@ -1,3 +1,5 @@
-/**
- * Created by ed on 19/12/2016.
- */
+$( document ).ready(function(){
+
+    $(".button-collapse").sideNav();
+
+})
