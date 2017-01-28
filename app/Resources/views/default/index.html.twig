@@ -1,36 +1,39 @@
 {% extends '::layout/base.html.twig' %}
 
 {% block body %}
-    <div class="row">
-        <h1>Bienvenue !</h1>
-    </div>
+    <header class="home-header">
+        <h1>Bienvenue sur mon site</h1>
+    </header>
 
-    <div class="row">
-        <div class="count">
-            Nombre d'articles : {{ posts.getTotalItemCount }}
-        </div>
-        <table class="table">
-            <tr>
-                {# sorting of properties based on query components #}
-                <th>{{ knp_pagination_sortable(posts, 'Id', 'a.id') }}</th>
-                <th{% if posts.isSorted('a.title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(posts, 'Title', 'a.title') }}</th>
-                <th>{{ knp_pagination_sortable(posts, 'Date', ['a.created', 'a.updated']) }}</th>
-            </tr>
+    <div class="container" id="home">
 
-            {# table body #}
+        <div class="row">
+            {#rajouter l'image comme ici https://artofwhere.com/#}
             {% for post in posts %}
-                <tr {% if loop.index is odd %}class="color"{% endif %}>
-                    <td>{{ post.id }}</td>
-                    <td>{{ post.title }}</td>
-                    <td>{{ post.created | date('Y-m-d') }}, {{ post.updated | date('H:i:s') }}</td>
-                </tr>
+
+                <article class="col s12 l4 home-post">
+                    <a href="#" class="wrapper">
+                        <img src="{{ post.image.AssetPath|imagine_filter('home_thumb') }}" class='responsive-img home-thumb' alt="{{ post.image.name }}" >
+                        <h2 class="title">{{ post.title }}</h2>
+                        <div class="valign-wrapper">
+                            <p class="content valign">
+                                {{ post.content|excerpt(30) }}
+                            </p>
+                        </div>
+                    </a>
+                    <div class="meta">
+                        le {{ post.created | date('d/m/Y') }} par {{ post.idUser.username }}
+                    </div>
+                </article>
             {% endfor %}
-        </table>
+        </div>
+
         {# display navigation #}
-        <div class="navigation">
+        <div class="navigation center">
             {{ knp_pagination_render(posts) }}
         </div>
     </div>
+
 
 
 {% endblock %}

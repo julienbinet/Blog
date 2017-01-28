@@ -136,6 +136,10 @@ liip_imagine:
             quality: 80
             filters:
                 thumbnail: { size: [50, 50], mode: outbound }
+        home_thumb:
+            quality: 80
+            filters:
+                thumbnail: { size: [415, 210], mode: outbound }
 
 #Pagination
 knp_paginator:
