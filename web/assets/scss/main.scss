@@ -1,7 +1,7 @@
 //inclure materialize.scss (ou pas)
 
 body{
-  font-family: 'Lato', Sans-Serif;
+  font-family: 'Lato', sans-serif;
 }
 
 .menu {
@@ -27,70 +27,95 @@ body{
     text-transform: uppercase;
     letter-spacing: 6px;
     font-weight: bold;
+  }
+}
+
+.category-header{
+  padding: 130px 0;
+  background: url("../../img/img7.jpeg") center top fixed;
+  background-size: cover;
+  margin-bottom: 50px;
+  position: relative;
+  h1 {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    z-index: 5;
+    margin: 0;
+    color: #fff;
+    bottom: 15px;
+    font-size: 3.5em;
+  }
+  .overlay{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(255, 255, 255, 0) 60%);
+    z-index: 1;
 
   }
 }
 
-
-
-  .list-post{
-    img{
-      display: block;
-      transition: transform 0.5s ease-in-out;
-    }
-    .wrapper{
-      overflow: hidden;
-      position: relative;
-      display: block;
-      &:hover{
-        img{
-          transform: scale(1.2);
-        }
-        .valign-wrapper{
-          opacity: 1;
-        }
+.list-post{
+  img{
+    display: block;
+    transition: transform 0.5s ease-in-out;
+  }
+  .wrapper{
+    overflow: hidden;
+    position: relative;
+    display: block;
+    &:hover{
+      img{
+        transform: scale(1.2);
+      }
+      .valign-wrapper{
+        opacity: 1;
       }
     }
-    .title{
-      position: absolute;
-      top: 0;
-      width: 100%;
-      margin: 0;
-      padding: 5px;
-      z-index:3;
-
-      font-size: 1.6em;
-      color: #ffffff;
-      background: rgba(0,128,128,0.75);
-    }
-    .valign-wrapper{
-      position: absolute;
-      top:0;
-      left:0;
-      height:100%;
-      z-index: 2;
-      width: 100%;
-
-      transition: opacity 0.5s ease-in-out;
-      opacity:0;
-      background: rgba(0,128,128,0.75);
-    }
-    .content{
-      color: #ffffff;
-      text-align: center;
-      width:100%;
-      padding: 0 5px;
-    }
-    .meta {
-      margin-bottom: 10px;
-      padding: 5px;
-      float: right;
-
-      font-size: 0.8em;
-      color: #888888;
-      border: 1px solid #888888;
-    }
   }
+  .title{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 5px;
+    z-index:3;
+
+    font-size: 1.6em;
+    color: #ffffff;
+    background: rgba(0,128,128,0.75);
+  }
+  .valign-wrapper{
+    position: absolute;
+    top:0;
+    left:0;
+    height:100%;
+    z-index: 2;
+    width: 100%;
+
+    transition: opacity 0.5s ease-in-out;
+    opacity:0;
+    background: rgba(0,128,128,0.75);
+  }
+  .content{
+    color: #ffffff;
+    text-align: center;
+    width:100%;
+    padding: 0 5px;
+  }
+  .meta {
+    margin-bottom: 10px;
+    padding: 5px;
+    float: right;
+
+    font-size: 0.8em;
+    color: #888888;
+    border: 1px solid #888888;
+  }
+}
 
 
 #footer{

@@ -1,16 +1,16 @@
 {% extends '::layout/base.html.twig' %}
 
 {% block body %}
-    <header class="category-header">
+    <header class="category-header" style="background: url('../../{{ category.image.AssetPath }}') bottom center fixed; background-size:cover; ">
         <h1>{{ category.name }}</h1>
+        <div class="overlay"></div>
     </header>
 
     <div class="container" id="category">
-
         <div class="row">
             {% for post in posts %}
                 <article class="col s12 l4 list-post">
-                    <a href="#" class="wrapper">
+                    <a href="{{ path('post_show', {id : post.id}) }}" class="wrapper">
                         <img src="{{ post.image.AssetPath|imagine_filter('home_thumb') }}" class='responsive-img home-thumb' alt="{{ post.image.name }}" >
                         <h2 class="title">{{ post.title }}</h2>
                         <div class="valign-wrapper">
@@ -26,7 +26,7 @@
             {% endfor %}
         </div>
 
-         display navigation
+
         <div class="navigation center">
             {{ knp_pagination_render(posts) }}
         </div>
