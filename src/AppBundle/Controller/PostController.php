@@ -2,158 +2,56 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Category;
 use AppBundle\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Post controller.
- *
- * @Route("admin/post")
- */
+
 class PostController extends Controller
 {
-    /**
-     * Lists all post entities.
-     *
-     * @Route("/", name="admin_post_index")
-     * @Method("GET")
-     */
-    public function indexAction()
-    {
-
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-
-        $autorized = $user->hasRole("ROLE_ADMIN");
-
-        $em = $this->getDoctrine()->getManager();
-
-
-        if ($autorized){
-            $posts = $em->getRepository('AppBundle:Post')->findAll();
-        }else{
-            $posts = $em->getRepository('AppBundle:Post')->findBy(array("idUser"=>$user->getId()));
-
-        }
-
-        return $this->render('post/index.html.twig', array(
-            'posts' => $posts,
-        ));
-    }
-
-    /**
-     * Creates a new post entity.
-     *
-     * @Route("/new", name="admin_post_new")
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request)
-    {
-        $post = new Post();
-        $form = $this->createForm('AppBundle\Form\PostType', $post);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $post->setIdUser($this->getUser());
-            $em = $this->getDoctrine()->getManager();
-
-            $em->persist($post);
-
-            //rajouter la relation tag/post
-            foreach ($post->getTags() as $tag){
-                $post->addTag($tag);
-            }
-
-            $em->flush($post);
-
-            $this->get('session')->getFlashBag()->add('success', "L'article a bien été créé");
-
-            return $this->redirectToRoute('admin_post_show', array('id' => $post->getId()));
-        }
-
-        return $this->render('post/new.html.twig', array(
-            'post' => $post,
-            'form' => $form->createView(),
-        ));
-    }
 
     /**
      * Finds and displays a post entity.
      *
-     * @Route("/{id}", name="admin_post_show")
+     * @Route("post/{id}", name="post_show")
      * @Method("GET")
      */
     public function showAction(Post $post)
     {
-        $deleteForm = $this->createDeleteForm($post);
 
-        return $this->render('post/show.html.twig', array(
+        return $this->render('public/post.html.twig', array(
             'post' => $post,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
+
     /**
-     * Displays a form to edit an existing post entity.
+     * Finds and displays a post entity.
      *
-     * @Route("/{id}/edit", name="admin_post_edit")
-     * @Method({"GET", "POST"})
+     * @Route("category/{slug}", name="post_category")
+     * @Method("GET")
      */
-    public function editAction(Request $request, Post $post)
+    public function categoryAction(Request $request,Category $category)
     {
-        $deleteForm = $this->createDeleteForm($post);
-        $editForm = $this->createForm('AppBundle\Form\PostType', $post);
-        $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-            $this->get('session')->getFlashBag()->add('success', "L'article a bien été modifié");
-            return $this->redirectToRoute('admin_post_edit', array('id' => $post->getId()));
-        }
 
-        return $this->render('post/edit.html.twig', array(
-            'post' => $post,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+        $em = $this->getDoctrine()->getManager();
+        $findPosts = $em->getRepository('AppBundle:Post')->PostsCategory($category->getId());
+
+        $paginator  = $this->get('knp_paginator');
+        $posts = $paginator->paginate(
+            $findPosts, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            3/*limit per page*/
+        );
+
+        return $this->render('public/category.html.twig', array(
+            'category' => $category,
+            'posts' => $posts
         ));
     }
 
-    /**
-     * Deletes a post entity.
-     *
-     * @Route("/{id}", name="admin_post_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, Post $post)
-    {
-        $form = $this->createDeleteForm($post);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($post);
-            $em->flush($post);
-            $this->get('session')->getFlashBag()->add('success', "L'article a bien été supprimé");
-        }
-
-        return $this->redirectToRoute('admin_post_index');
-    }
-
-    /**
-     * Creates a form to delete a post entity.
-     *
-     * @param Post $post The post entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Post $post)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_post_delete', array('id' => $post->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-            ;
-    }
 }

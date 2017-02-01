@@ -12,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  *
  * @Route("admin/tag")
  */
-class TagController extends Controller
+class TagAdminController extends Controller
 {
     /**
      * Lists all tag entities.

@@ -10,4 +10,16 @@ namespace AppBundle\Repository;
  */
 class PostRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function PostsCategory($id) {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.category = :category')
+            ->andWhere('u.published = 1')
+            ->orderBy('u.created')
+            ->setParameter('category', $id);
+
+        return $qb->getQuery()->getResult();
+    }
+
 }
