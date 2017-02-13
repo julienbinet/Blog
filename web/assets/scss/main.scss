@@ -4,6 +4,10 @@ body{
   font-family: 'Lato', sans-serif;
 }
 
+nav .brand-logo{
+  margin-left:15px;
+}
+
 .menu {
   background-color: #008080;
   .items {
@@ -81,7 +85,7 @@ body{
     top: 0;
     width: 100%;
     margin: 0;
-    padding: 5px;
+    padding: 10px 15px;
     z-index:3;
 
     font-size: 1.6em;
@@ -114,12 +118,30 @@ body{
     font-size: 0.8em;
     color: #888888;
     border: 1px solid #888888;
+    border-top:none;
   }
 }
 
 
-#footer{
-  h4{
-    text-align: center;
+.pagination li.active{
+  background-color: #008888;
+}
+
+#post{
+  .post-content, .sidebar{
+    border: 1px solid black;
+    margin-top: 15px;
+  }
+  .sidebar{
+    padding:15px 20px;
+  }
+}
+
+
+footer.page-footer{
+  color:#fff;
+  background-color: #000;
+  a{
+    color:#fff;
   }
 }

@@ -1,0 +1,17 @@
+<div>
+    Categories :
+    {% for category in categories %}
+    <p>{{ category.name }}</p>
+    {% endfor %}
+</div>
+
+
+<div>
+    Derniers articles :
+
+    {% for post in posts %}
+        <p>{{ post.title}} <br> {{ post.created | date('d/m/Y h::m::s') }}</p>
+    {% endfor %}
+
+</div>
+

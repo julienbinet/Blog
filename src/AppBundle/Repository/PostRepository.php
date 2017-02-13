@@ -22,4 +22,25 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function LastPosts() {
+//        $qb = $this->createQueryBuilder('u')
+//            ->select('u')
+//            ->where('u.published = 1')
+//            ->orderBy('u.created');
+//
+//        return $qb->getQuery()->getResult();
+
+
+
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM AppBundle:Post p ORDER BY p.created desc'
+            )
+            ->setMaxResults(5)
+            ->getResult();
+
+
+
+    }
+
 }

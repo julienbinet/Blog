@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
@@ -28,5 +29,16 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig', [
             'posts' => $posts,
         ]);
+    }
+
+
+    public function sidebarAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('AppBundle:Category')->findAll();
+
+        $lastPosts = $em->getRepository('AppBundle:Post')->LastPosts();
+
+        return $this->render('public/sidebar.html.twig', array('categories' => $categories, "posts" => $lastPosts));
     }
 }
