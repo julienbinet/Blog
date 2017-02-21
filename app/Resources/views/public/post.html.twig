@@ -16,7 +16,7 @@
                 </header>
 
                 <p>
-                    {{ post.content|raw }}
+                    {{ post.content|raw|nl2br }}
                 </p>
 
                 <p>Catégorie : <a href="{{ path('post_category',{"slug" : post.category.slug}) }}">{{ post.category.name }} </a></p>
@@ -27,7 +27,30 @@
 
                 <p>Créé le {{ post.created | date('d/m/Y') }} par {{ post.idUser.username }}</p>
 
-                {{ dump(comments) }}
+                {{ form_start(form) }}
+
+                {{ form_widget(form) }}
+                <button type="submit" class="btn btn-round btn-success">Valider</button>
+                {{ form_end(form) }}
+
+                {% if comments|length > 0 %}
+
+                    {% for comment in comments %}
+                        {{ comment.username}}
+                        {{ comment.content | raw | nl2br}}
+                        <p>Ecrit le {{ comment.created | date('d/m/Y à h:m:s') }}</p>
+                        {% if not loop.last %}<hr> {% endif %}
+                    {% endfor %}
+
+                {% else %}
+
+                    <p>Aucun commentaire</p>
+
+                {% endif %}
+
+              
+
+
             </article>
 
             <div class="col s12 l3 offset-l1 sidebar">
