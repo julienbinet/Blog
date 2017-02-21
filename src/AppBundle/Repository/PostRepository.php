@@ -38,9 +38,6 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
             )
             ->setMaxResults(5)
             ->getResult();
-
-
-
     }
 
 }

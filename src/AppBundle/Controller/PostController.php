@@ -22,8 +22,12 @@ class PostController extends Controller
     public function showAction(Post $post)
     {
 
+        $em = $this->getDoctrine()->getManager();
+        $comments = $em->getRepository('AppBundle:Comment')->CommentsByPost($post->getId());
+
         return $this->render('public/post.html.twig', array(
             'post' => $post,
+            'comments' => $comments
         ));
     }
 

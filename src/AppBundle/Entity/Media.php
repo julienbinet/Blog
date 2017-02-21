@@ -87,8 +87,10 @@ class Media {
             $this->path = sha1(uniqid(mt_rand(), true)) . '.' . $this->file->guessExtension();
             $this->name = $this->file->getClientOriginalName();
         }else{
-            $this->path = "default.png";
-            $this->name = "image par défaut";
+            if(null == $this->path && null == $this->name){
+                $this->path = "default.png";
+                $this->name = "image par défaut";
+            }
         }
     }
 

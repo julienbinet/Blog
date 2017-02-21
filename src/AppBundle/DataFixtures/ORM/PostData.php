@@ -20,7 +20,11 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface {
         $post1->addTag($this->getReference('tag1'));
         $post1->addTag($this->getReference('tag2'));
         $post1->addTag($this->getReference('tag3'));
+        $post1->addComment($this->getReference('comment1'));
+        $post1->addComment($this->getReference('comment2'));
         $manager->persist($post1);
+        $this->getReference('comment1')->setPost($post1);
+        $this->getReference('comment2')->setPost($post1);
 
         $post2 = new Post();
         $post2->setImage($this->getReference('media2'));
@@ -34,7 +38,13 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface {
         $post2->addTag($this->getReference('tag5'));
         $post2->addTag($this->getReference('tag6'));
         $post2->addTag($this->getReference('tag7'));
+        $post2->addComment($this->getReference('comment3'));
+        $post2->addComment($this->getReference('comment4'));
+        $post2->addComment($this->getReference('comment5'));
         $manager->persist($post2);
+        $this->getReference('comment3')->setPost($post2);
+        $this->getReference('comment4')->setPost($post2);
+        $this->getReference('comment5')->setPost($post2);
 
         $post3 = new Post();
         $post3->setImage($this->getReference('media3'));
@@ -48,7 +58,9 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post3->addTag($this->getReference('tag1'));
         $post3->addTag($this->getReference('tag8'));
         $post3->addTag($this->getReference('tag9'));
+        $post3->addComment($this->getReference('comment6'));
         $manager->persist($post3);
+        $this->getReference('comment6')->setPost($post3);
 
         $post4 = new Post();
         $post4->setImage($this->getReference('media4'));
@@ -59,7 +71,9 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post4->setPublished(1);
         $post4->addTag($this->getReference('tag10'));
         $post4->addTag($this->getReference('tag1'));
+        $post4->addComment($this->getReference('comment7'));
         $manager->persist($post4);
+        $this->getReference('comment7')->setPost($post4);
 
         $post5 = new Post();
         $post5->setImage($this->getReference('media5'));
@@ -70,7 +84,11 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post5->setPublished(1);
         $post5->addTag($this->getReference('tag3'));
         $post5->addTag($this->getReference('tag11'));
+        $post5->addComment($this->getReference('comment8'));
+        $post5->addComment($this->getReference('comment9'));
         $manager->persist($post5);
+        $this->getReference('comment8')->setPost($post5);
+        $this->getReference('comment9')->setPost($post5);
 
         $post6 = new Post();
         $post6->setImage($this->getReference('media6'));
@@ -82,7 +100,13 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $post6->addTag($this->getReference('tag3'));
         $post6->addTag($this->getReference('tag6'));
         $post6->addTag($this->getReference('tag15'));
+        $post6->addComment($this->getReference('comment10'));
+        $post6->addComment($this->getReference('comment11'));
+        $post6->addComment($this->getReference('comment12'));
         $manager->persist($post6);
+        $this->getReference('comment10')->setPost($post6);
+        $this->getReference('comment11')->setPost($post6);
+        $this->getReference('comment12')->setPost($post6);
 
 
         $post7 = new Post();
@@ -149,10 +173,13 @@ Vivamus dignissim purus ex, ut fringilla lacus aliquet congue. Phasellus eu turp
         $manager->persist($post12);
 
         $manager->flush();
+
+
+
     }
 
     public function getOrder() {
-        return 5;
+        return 6;
     }
 
 }

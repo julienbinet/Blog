@@ -2,7 +2,10 @@
 
 body{
   font-family: 'Lato', sans-serif;
+  background-color: #d7efef;
 }
+
+a{color:#000;}
 
 nav .brand-logo{
   margin-left:15px;
@@ -114,7 +117,7 @@ nav .brand-logo{
     margin-bottom: 10px;
     padding: 5px;
     float: right;
-
+    background-color: #fff;
     font-size: 0.8em;
     color: #888888;
     border: 1px solid #888888;
@@ -128,12 +131,51 @@ nav .brand-logo{
 }
 
 #post{
-  .post-content, .sidebar{
-    border: 1px solid black;
+
+  .post-content{
+    background-color: #fff;
+    border: 1px solid #979797;
     margin-top: 15px;
+    header {
+      h1{
+        margin:10px;
+        font-size: 2em;
+      }
+      img{
+        display: block;
+        margin:0 auto;
+      }
+    }
   }
   .sidebar{
-    padding:15px 20px;
+    padding: 0;
+    margin-top: 15px;
+    .block{
+      background-color: #fff;
+      border: 1px solid #979797;
+      margin-bottom: 15px;
+      .title{
+        margin:0;
+        color:#fff;
+        background-color: #008888;
+        font-size:1.5em;
+        padding: 10px;
+      }
+      .list{
+        padding:10px;
+        margin: 0;
+        .list-item{
+          margin-bottom: 5px;
+        }
+        .post-title{
+          font-weight: bold;
+        }
+        .post-date{
+          font-size: 0.9em;
+          color: #777;
+        }
+      }
+    }
   }
 }
 

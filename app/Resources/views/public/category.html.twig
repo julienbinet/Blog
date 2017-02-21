@@ -1,5 +1,7 @@
 {% extends '::layout/base.html.twig' %}
 
+{% block title %} {{ parent() }} > {{ category.name }}{% endblock %}
+
 {% block body %}
     <header class="category-header" style="background: url('../../{{ category.image.AssetPath }}') bottom center fixed; background-size:cover; ">
         <h1>{{ category.name }}</h1>

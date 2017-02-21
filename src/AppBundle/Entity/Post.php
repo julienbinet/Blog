@@ -102,6 +102,13 @@ class Post
      */
     private $contentChanged;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
+     * @ORM\OrderBy({"createdAt" = "DESC"})
+     */
+    private $comments;
+
     public function __construct() {
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -413,5 +420,39 @@ class Post
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \AppBundle\Entity\Comment $comment
+     *
+     * @return Post
+     */
+    public function addComment(\AppBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \AppBundle\Entity\Comment $comment
+     */
+    public function removeComment(\AppBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
