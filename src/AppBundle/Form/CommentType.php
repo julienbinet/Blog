@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+
 class CommentType extends AbstractType
 {
     /**
@@ -14,9 +16,15 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', null, ["label" => "Nom d'utilisateur"])
-            ->add('Email', null, ["label" => "E-mail"])
-            ->add('content', null, ["label" => "Contenu"]) ;
+            ->add('username', null, [
+                "label" => "Nom d'utilisateur",
+                "label_attr" => ["data-error" => "wrong", "data-success" => "right"],
+            ])
+            ->add('email', EmailType::class, ["label" => "E-mail"])
+            ->add('content', null, [
+                "label" => "Votre message",
+                "attr" => ["class"=> "materialize-textarea"]
+            ]) ;
     }
     
     /**

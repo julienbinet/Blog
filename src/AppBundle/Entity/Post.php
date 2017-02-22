@@ -105,7 +105,7 @@ class Post
 
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
-     * @ORM\OrderBy({"createdAt" = "DESC"})
+     * @ORM\OrderBy({"created" = "DESC"})
      */
     private $comments;
 
