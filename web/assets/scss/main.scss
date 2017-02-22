@@ -23,12 +23,12 @@ nav .brand-logo{
 }
 
 .home-header {
-  padding: 315px 0;
-  background: url("../../img/img7.jpeg") center top fixed;
+  padding: 250px 0;
+  background: url("../../img/img8.jpeg") center center fixed;
   background-size: cover;
   margin-bottom: 50px;
   h1{
-    color: #008888;
+    color: #fff;
     text-align: center;
     font-size: 2.5em;
     text-transform: uppercase;
@@ -52,6 +52,7 @@ nav .brand-logo{
     color: #fff;
     bottom: 15px;
     font-size: 3.5em;
+    text-align: center;
   }
   .overlay{
     position: absolute;
@@ -212,3 +213,45 @@ footer.page-footer{
     color:#fff;
   }
 }
+
+
+/* Small only */
+@media only screen and (max-width: 600px) {
+  .home-header {
+    padding: 50px 0;
+    background: url("../../img/img8.jpeg") center bottom fixed;
+  }
+
+  .category-header {
+    padding: 60px 0;
+    margin-bottom: 25px;
+    h1 {
+      font-size:2.8em;
+    }
+  }
+}
+
+/* Small and Medium */
+@media only screen and (max-width: 992px) {
+
+}
+
+/* Medium and ++ */
+@media only screen and (min-width: 601px) {
+
+}
+
+/* Medium only */
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+
+  .home-header {
+    padding: 150px 0;
+  }
+}
+
+/* Large only */
+@media only screen and (min-width: 993px) {
+
+}
+
+
