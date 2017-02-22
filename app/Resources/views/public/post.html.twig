@@ -7,7 +7,14 @@
     <div class="container" id="post">
         <div class="row">
 
+            <div class="breadcrumb col s12">
+                <a href="{{ path("homepage") }}">Accueil</a> >
+                <a href="{{ path('post_category',{"slug" : post.category.slug}) }}">{{ post.category.name }} </a> >
+                {{ post.title }}
+            </div>
+
             <article class="col s12 l8 post-content">
+
 
 
                 <header class="post-header">
@@ -23,7 +30,12 @@
                 <p>Catégorie : <a href="{{ path('post_category',{"slug" : post.category.slug}) }}">{{ post.category.name }} </a></p>
 
                 {% if post.tags|length > 0 %}
-                    <p>Tags : {% for tag in post.tags %}{{ tag.name}}{% if not loop.last %}, {% endif %} {% endfor %}</p>
+                    <p>Tags :
+                        {% for tag in post.tags %}
+                        <a href="{{ path('tag_show', {"name" : tag.name}) }}">{{ tag.name}}</a>
+                            {% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
                 {% endif %}
 
                 <div class="clearfix"></div>

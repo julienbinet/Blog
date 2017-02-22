@@ -40,4 +40,16 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 
+    public function PostsByTag($id) {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->innerJoin('u.tags', 't')
+            ->where('t.id = :tag_id')
+            ->orderBy('u.created')
+            ->setParameter('tag_id', $id);
+
+        return $qb->getQuery()->getResult();
+    }
+
+
 }
