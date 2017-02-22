@@ -34,7 +34,7 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
 
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT p FROM AppBundle:Post p ORDER BY p.created desc'
+                'SELECT p FROM AppBundle:Post p where p.published = 1 ORDER BY p.created desc'
             )
             ->setMaxResults(5)
             ->getResult();
@@ -45,6 +45,7 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
             ->select('u')
             ->innerJoin('u.tags', 't')
             ->where('t.id = :tag_id')
+            ->andWhere('u.published = 1')
             ->orderBy('u.created')
             ->setParameter('tag_id', $id);
 

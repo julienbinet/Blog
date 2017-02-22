@@ -3,12 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Tag
  *
  * @ORM\Table(name="jb_site_tag")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TagRepository")
+ * @UniqueEntity(fields={"name"}, message="Ce tag existe déjà")
  */
 class Tag
 {
@@ -35,7 +37,7 @@ class Tag
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
 
