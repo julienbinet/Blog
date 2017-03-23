@@ -13,6 +13,25 @@
                 {{ post.title }}
             </div>
 
+
+
+            {% if app.request.hasPreviousSession %}
+                {% for type, messages in app.session.flashbag.all() %}
+                    {% for message in messages %}
+                        <div class="clearfix"></div>
+
+                        <div id="card-alert" class="card green">
+                            <div class="card-content white-text">
+                                <p><i class="mdi-navigation-check"></i>{{ message }}</p>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+
+
+
             <article class="col s12 l8 post-content">
 
 
