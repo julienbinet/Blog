@@ -40,9 +40,10 @@
             <div class="x_title"><h3>Informations</h3></div>
             <p>Catégorie : <a href="{{ path('admin_category_show',{"id" : post.category.id}) }}">{{ post.category.name}}</a></p>
             <p>Tags :
-                {% for tag in post.tags %}
-                    <a href="{{ path('admin_tag_show',{"id" : tag.id}) }}">{{ tag.name}}</a>{% if not loop.last %}, {% endif %}
-                {% endfor %}
+                {#{% for tag in post.tags %}#}
+                    {#<a href="{{ path('admin_tag_show',{"id" : tag.id}) }}">{{ tag.name}}</a>{% if not loop.last %}, {% endif %}#}
+                {#{% endfor %}#}
+                {{  post.tags |join(', ') }}
             </p>
             <p>Auteur : {{ post.idUser.username }}</p>
             <p>Modifié le : {% if post.contentChanged %}{{ post.contentChanged|date('d/m/Y H:i:s') }}{% else %}{{ post.created|date('d/m/Y à H:i:s') }}{% endif %}</p>

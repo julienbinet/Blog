@@ -6,7 +6,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
 use JB\TagBundle\Entity\Tag;
 use PHPUnit\Framework\TestCase;
-use JB\TagBundle\Form\DatcaTransformer\TagsTransformer;
+use JB\TagBundle\Form\DataTransformer\TagsTransformer;
 
 class TagsTransformerTest extends TestCase{
 
