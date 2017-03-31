@@ -61,11 +61,6 @@ class PostAdminController extends Controller
 
             $em->persist($post);
 
-            //rajouter la relation tag/post
-            foreach ($post->getTags() as $tag){
-                $post->addTag($tag);
-            }
-
             $em->flush($post);
 
             $this->get('session')->getFlashBag()->add('success', "L'article a bien été créé");

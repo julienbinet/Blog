@@ -11,3 +11,7 @@ fos_user:
 
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+tag:
+    resource: "@TagBundle/Resources/config/routing.yml"
+    prefix:   /

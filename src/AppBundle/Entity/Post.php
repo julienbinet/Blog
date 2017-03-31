@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use JB\TagBundle\Concern\Taggable;
 
 /**
  * Post
@@ -14,6 +15,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Post
 {
+
+    use Taggable;
+
+
     /**
      * @var int
      *
@@ -29,10 +34,7 @@ class Post
      */
     private $category;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Tag", mappedBy="posts",  cascade={"persist"})
-     */
-    private $tags;
+
 
 
     /**
@@ -387,40 +389,7 @@ class Post
         return $this->category;
     }
 
-    /**
-     * Add tag
-     *
-     * @param \AppBundle\Entity\Tag $tag
-     *
-     * @return Post
-     */
-    public function addTag(\AppBundle\Entity\Tag $tag)
-    {
-        $tag->addPost($this);
-        $this->tags[] = $tag;
 
-        return $this;
-    }
-
-    /**
-     * Remove tag
-     *
-     * @param \AppBundle\Entity\Tag $tag
-     */
-    public function removeTag(\AppBundle\Entity\Tag $tag)
-    {
-        $this->tags->removeElement($tag);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
 
     /**
      * Add comment

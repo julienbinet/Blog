@@ -21,9 +21,3 @@ services:
         class: AppBundle\Form\ProfileType
         tags:
             - { name: form.type, alias: app_user_profile }
-
-    my.doctrine.listener:
-        class: AppBundle\Listener\UniqueTagListener
-        tags:
-            - { name: doctrine.event_listener, event: preUpdate }
-            - { name: doctrine.event_listener, event: prePersist }

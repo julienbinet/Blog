@@ -19,7 +19,7 @@ framework:
     form:            ~
     csrf_protection: ~
     validation:      { enable_annotations: true }
-    #serializer:      { enable_annotations: true }
+    serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
     default_locale:  "%locale%"
@@ -119,6 +119,9 @@ fos_user:
     profile:
             form:
                 type: AppBundle\Form\ProfileType
+    from_email:
+            address:        noreply@example.com
+            sender_name:    Demo App
 
 #Thumb generator
 liip_imagine:

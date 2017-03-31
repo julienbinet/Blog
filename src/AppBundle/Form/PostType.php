@@ -10,8 +10,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use AppBundle\Form\MediaType;
-use AppBundle\Form\TagType;
 use AppBundle\Entity\Category;
+use JB\TagBundle\Form\Type\TagsType;
 
 class PostType extends AbstractType
 {
@@ -33,16 +33,7 @@ class PostType extends AbstractType
                     'uiColor' => '#2A3F54',
                 )))
             ->add('image', MediaType::class,array( ))
-            ->add('tags', CollectionType::class, array (
-                'allow_add' => true,
-                'allow_delete' => true,
-                'prototype' => true,
-                'entry_type' => TagType::class,
-                'attr' => array(
-                    'class' => 'my-selector',
-                )
-            ))
-        ;
+            ->add('tags', TagsType::class);
     }
 
     /**

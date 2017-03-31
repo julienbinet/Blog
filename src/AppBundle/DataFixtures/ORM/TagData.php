@@ -5,7 +5,7 @@ namespace AppBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\Entity\Tag;
+use JB\TagBundle\Entity\Tag;
 
 class TagData extends AbstractFixture implements OrderedFixtureInterface {
 
