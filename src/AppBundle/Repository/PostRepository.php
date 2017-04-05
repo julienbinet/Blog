@@ -32,6 +32,26 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 
+
+
+
+    public function AllPostsPublished() {
+
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.tags', 't')
+            ->innerJoin('p.category', 'c')
+            ->innerJoin('p.image', 'i')
+            ->where('p.category = c.id')
+            ->andWhere('p.image = i.id')
+            ->andWhere('p.published = 1')
+            ->select('p, t, c, i')
+            ->orderBy('p.created', "desc")
+            ->getQuery()
+            ->getResult();
+
+    }
+
+
     public function PostsByTag($id) {
         $qb = $this->createQueryBuilder('u')
             ->select('u')

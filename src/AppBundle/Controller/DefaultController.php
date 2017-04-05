@@ -16,7 +16,8 @@ class DefaultController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $findPosts = $em->getRepository('AppBundle:Post')->findBy(array("published" => 1));
+//        $findPosts = $em->getRepository('AppBundle:Post')->findBy(array("published" => 1));
+        $findPosts = $em->getRepository('AppBundle:Post')->AllPostsPublished();
 
         $paginator  = $this->get('knp_paginator');
         $posts = $paginator->paginate(

@@ -32,7 +32,8 @@ class PostAdminController extends Controller
 
 
         if ($autorized){
-            $posts = $em->getRepository('AppBundle:Post')->findAll();
+//            $posts = $em->getRepository('AppBundle:Post')->findAll();
+            $posts = $em->getRepository('AppBundle:Post')->AllPosts();
         }else{
             $posts = $em->getRepository('AppBundle:Post')->findBy(array("idUser"=>$user->getId()));
 
